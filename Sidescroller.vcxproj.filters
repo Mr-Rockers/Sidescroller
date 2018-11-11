@@ -13,5 +13,69 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Gameplay + Submodules">
+      <UniqueIdentifier>{5d032abc-084d-41a2-a0e2-5dcfcdc5b80c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\System">
+      <UniqueIdentifier>{021b924d-0891-44eb-87c3-6f4577362859}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gameplay + Submodules">
+      <UniqueIdentifier>{26b69584-9092-42e6-89e8-157b55b20af6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\System">
+      <UniqueIdentifier>{79f2a8c2-086b-485c-bbbf-a90185c1c067}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Renderer + Submodules">
+      <UniqueIdentifier>{869991aa-6211-4ee7-ab72-f8785ad42e05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Renderer + Submodules">
+      <UniqueIdentifier>{2bd1a076-23de-4f8f-b06a-9ef0e1a3ba3c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CharacterHandler.cpp">
+      <Filter>Source Files\Gameplay + Submodules</Filter>
+    </ClCompile>
+    <ClCompile Include="GameData.cpp">
+      <Filter>Source Files\Gameplay + Submodules</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Source Files\Renderer + Submodules</Filter>
+    </ClCompile>
+    <ClCompile Include="Sidescroller.cpp">
+      <Filter>Source Files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="InputHandler.cpp">
+      <Filter>Source Files\Gameplay + Submodules</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsHandler.cpp">
+      <Filter>Source Files\Gameplay + Submodules</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CharacterHandler.h">
+      <Filter>Header Files\Gameplay + Submodules</Filter>
+    </ClInclude>
+    <ClInclude Include="GameData.h">
+      <Filter>Header Files\Gameplay + Submodules</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Header Files\Renderer + Submodules</Filter>
+    </ClInclude>
+    <ClInclude Include="InputHandler.h">
+      <Filter>Header Files\Gameplay + Submodules</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsHandler.h">
+      <Filter>Header Files\Gameplay + Submodules</Filter>
+    </ClInclude>
+    <ClInclude Include="ExtraMaths.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="ExtraFunctions.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
