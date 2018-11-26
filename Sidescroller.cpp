@@ -3,8 +3,10 @@
 /*MODULE*/#include "GameData.h"
 /*MODULE*/#include "Renderer.h"
 
-GameData gameData;
-Renderer* renderer;
+/*BASE CLASSES*/
+Core core = Core(1280, 720);
+GameData gameData = GameData(&core);
+Renderer renderer = Renderer(&gameData, &core);
 
 int run();
 int main(int argc, char** argv) {
@@ -23,8 +25,7 @@ int main(int argc, char** argv) {
 	}
 
 	{
-		renderer = new Renderer(&gameData);
-		int success = renderer->init();
+		int success = renderer.init();
 		if (success != 0) {
 			return success;
 		}
@@ -56,7 +57,7 @@ int run() {
 
 		/*GRAPHICS*/
 		{
-			int success = renderer->update(deltaTime);
+			int success = renderer.update(deltaTime);
 			if (success < 0) {
 				return -1;
 			}

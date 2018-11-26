@@ -8,11 +8,11 @@
 #include <vector>
 #include <math.h>
 #include <random>
+#include <algorithm>
 
 /*EXTERNAL*/
 #include <SDL.h>
 #include <SDL_image.h>
-#include <Box2D/Box2D.h>
 
 /*HELPER FUNCTIONS*/
 #include "ExtraMaths.h"

@@ -8,30 +8,38 @@
 #include "PhysicsHandler.h"
 #include "CharacterHandler.h"
 
-enum GameTileIDEnum {AIR, BRICK};
+enum GameMode {INGAME, EDITOR};
+enum GameTileIDEnum {AIR, BRICK, GRASS};
 
 struct GameTile : public PhysicsObject{
 
 	GameTileIDEnum tileID;
 	bool isSolid;
+	bool visible;
 
-	GameTile(PhysicsHandler* physicsHandler, GameTileIDEnum tileID, bool isSolid, b2Vec2 tilePosition);
+	GameTile(PhysicsHandler* physicsHandler, GameTileIDEnum tileID, Vec2 tilePosition, bool isSolid, bool visible);
 };
 
 struct GameLevel {
 	std::vector<GameTile*> levelData;
 };
 
-struct GameData {
+class GameData {
+	Core* core;
+	bool editMode_onetime;
+	GameTile* debugTile;
+public:
 	InputHandler* inputHandler;
 	PhysicsHandler* physHandler;
 	CharacterHandler* characterHandler;
+
+	GameMode currentGameMode;
 	GameLevel currentLevel;
 
 	int init();
 	int update(float deltaTime);
 
-	GameData();
+	GameData(Core* core);
 };
 
 #endif

@@ -1,7 +1,37 @@
 #ifndef EXTRAFUNCTIONS_HELPER_H
 #define EXTRAFUNCTIONS_HELPER_H
 
+#include "SDL.h"
+
 /*GENERAL*/
+class Core {
+	int tileScale;
+	int heightAdjustment;
+public:
+	int windowWidth;
+	int windowHeight;
+	SDL_Window* mainWindow;
+
+	int getTileScale() {
+		return this->tileScale;
+	}
+	void setTileScale(float widthPercent) {
+		this->tileScale = (int)(widthPercent * (float)this->windowWidth);
+		this->heightAdjustment = this->tileScale * 2;
+	}
+
+	int getHeightAdjustment() {
+		return this->heightAdjustment;
+	}
+
+	Core(int windowWidth, int windowHeight) :
+		windowWidth(windowWidth),
+		windowHeight(windowHeight),
+		mainWindow(nullptr) {
+		this->setTileScale(0.05f);
+	}
+};
+
 enum FIND_TYPE { LARGEST, SMALLEST };
 template <typename T>
 static unsigned int FindInArray(T* valueArray, unsigned int size, FIND_TYPE type) { //Returns appropriate index.
@@ -42,5 +72,12 @@ static const SDL_Point GetPoint(int x, int y) {
 	foo.y = y;
 	return foo;
 }
-
+static const SDL_Colour GetColour(Uint8 r, Uint8 g, Uint8 b, Uint8 a) {
+	SDL_Colour val;
+	val.r = r;
+	val.g = g;
+	val.b = b;
+	val.a = a;
+	return val;
+}
 #endif
