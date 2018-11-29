@@ -256,16 +256,16 @@ int Renderer::update(float deltaTime) {
 
 	//Render Background
 	if (this->gameData->characterHandler->currentAction == IDLE) {
-		trailOffset = Lerp(trailOffset, 0.0f, deltaTime * 4.0f);
+		core->trailOffset = Lerp(core->trailOffset, 0.0f, deltaTime * 4.0f);
 	}
 	else {
-		trailOffset += (this->gameData->characterHandler->movement.x / this->gameData->characterHandler->playerSpeed);
-		float trailAmount = this->getTrailAmount();
-		if (trailOffset > trailAmount) {
-			trailOffset = trailAmount;
+		core->trailOffset += (this->gameData->characterHandler->movement.x / this->gameData->characterHandler->playerSpeed);
+		float trailAmount = core->getTrailAmount();
+		if (core->trailOffset > trailAmount) {
+			core->trailOffset = trailAmount;
 		}
-		if (trailOffset < -trailAmount) {
-			trailOffset = -trailAmount;
+		if (core->trailOffset < -trailAmount) {
+			core->trailOffset = -trailAmount;
 		}
 	}
 
@@ -282,7 +282,7 @@ int Renderer::update(float deltaTime) {
 			int tileScreenX = (int)(
 				/*Arbitrary Adjustments*/	(float)(this->core->windowWidth - this->core->getTileScale()) / 2.0f +
 				/*Positional Adjustments*/	(float)(this->core->getTileScale()) * (tilePosition.x - playerPosition.x) +
-				/*Trail Offset*/			trailOffset
+				/*Trail Offset*/			(int)core->trailOffset
 				);
 			int tileScreenY = (int)(
 				/*Arbitrary Adjustments*/	(float)(this->core->windowHeight - this->core->getHeightAdjustment()) +
@@ -308,7 +308,7 @@ int Renderer::update(float deltaTime) {
 		&GetRect(
 			this->core->getTileScale() * 4,
 			this->core->getTileScale() * 4,
-			(this->core->windowWidth - this->core->getTileScale() * 4) / 2 + (int)trailOffset,
+			(this->core->windowWidth - this->core->getTileScale() * 4) / 2 + (int)core->trailOffset,
 			(this->core->windowHeight - this->core->getTileScale() * 3 - this->core->getHeightAdjustment())
 		)
 	);
@@ -338,7 +338,7 @@ int Renderer::update(float deltaTime) {
 		&GetRect(
 			newPlayerTextureScale,
 			newPlayerTextureScale,
-			(this->core->windowWidth - newPlayerTextureScale) / 2 + (int)trailOffset,
+			(this->core->windowWidth - newPlayerTextureScale) / 2 + (int)core->trailOffset,
 			(this->core->windowHeight - newPlayerTextureScale - this->core->getHeightAdjustment())
 		)
 	);
@@ -426,13 +426,8 @@ void Renderer::generateGradient(SDL_Texture* tex, SDL_Colour a, SDL_Colour b, bo
 	
 }
 
-float Renderer::getTrailAmount() {
-	return (float)this->core->getTileScale() / 2.0f;
-}
-
 Renderer::Renderer(GameData* gameData, Core* core) : gameData(gameData), core(core) {
 	//Set values integral to the renderer.
-	this->trailOffset = 0.0f;
 	this->lightingBrightness = 255;
 	this->lightingGamma = 0;
 	this->cogwheelRotation = 0.0f;

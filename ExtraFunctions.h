@@ -10,6 +10,7 @@ class Core {
 public:
 	int windowWidth;
 	int windowHeight;
+	float trailOffset;
 	SDL_Window* mainWindow;
 
 	int getTileScale() {
@@ -24,9 +25,14 @@ public:
 		return this->heightAdjustment;
 	}
 
+	float getTrailAmount() {
+		return (float)this->tileScale / 2.0f;
+	}
+
 	Core(int windowWidth, int windowHeight) :
 		windowWidth(windowWidth),
 		windowHeight(windowHeight),
+		trailOffset(0.0f),
 		mainWindow(nullptr) {
 		this->setTileScale(0.05f);
 	}

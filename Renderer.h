@@ -47,8 +47,6 @@ public:
 
 	BaseTextures baseTextures;
 
-	float trailOffset;
-
 	Uint8 lightingBrightness; //How bright does the scene get?
 	Uint8 lightingGamma;		//How dark does the scene get?
 
@@ -57,8 +55,6 @@ public:
 
 	void renderTile(float x, float y, GameTile* tile);
 	void generateGradient(SDL_Texture* tex, SDL_Colour a, SDL_Colour b, bool dir);
-
-	float getTrailAmount();
 	
 	Renderer(GameData* gameData, Core* core);
 };

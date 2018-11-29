@@ -29,9 +29,8 @@ void InputHandler::updateMouseInfo(Vec2 playerPosition, Core* core) {
 	);
 
 	//CALCULATE THE RELATIVE MOUSE POSITION
-	//NOTE THAT THE TRAILOFFSET VARIABLE IS NOT FACTORED IN. SHOULD IT?
 	this->inputActivity.mousePos_relative = Vec2(
-		((float)mouseX / (float)core->getTileScale()) - ((float)core->windowWidth / (float)core->getTileScale() / 2.0f) + playerPosition.x,
+		((float)mouseX / (float)core->getTileScale()) - ((float)core->windowWidth / (float)core->getTileScale() / 2.0f) - (core->trailOffset / (float)core->getTileScale()) + playerPosition.x,
 		((float)core->windowHeight / (float)core->getTileScale() / 2.0f) - ((float)(mouseY - core->getHeightAdjustment()) / (float)core->getTileScale()) + playerPosition.y
 	);
 }
